@@ -1,4 +1,4 @@
-FROM ubuntu:jammy-20220531 as builder
+FROM ubuntu:latest as builder
 
 RUN DEBIAN_FRONTEND=noninteractive apt-get update && \
     DEBIAN_FRONTEND=noninteractive apt-get upgrade -y && \
@@ -104,7 +104,7 @@ RUN cd /tmp/build && \
     sha256sum aws-iam-authenticator  && \
     echo "$AWS_IAM_AUTH_CHECKSUM  aws-iam-authenticator" | sha256sum --check --status
 
-FROM ubuntu:jammy-20220531
+FROM ubuntu:latest
 
 ARG USER_UID=1000
 ARG USER_NAME="dev"
